@@ -1,0 +1,208 @@
+\documentclass[11pt,fleqn]{article}
+\usepackage{latexsym,epsf,epsfig}
+\usepackage{amsmath,amsthm}
+\begin{document}
+\newcommand{\mbf}[1]{\mbox{{\bfseries #1}}}
+\newcommand{\N}{\mbf{N}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\def\floor#1{\lfloor #1 \rfloor}
+
+
+\section*{CS 70 homework 2 solutions}
+
+Your full name: PUT YOUR NAME HERE
+\newline
+Your login name: PUT YOUR LOGIN NAME HERE
+\newline
+Homework 2
+\newline
+Your section number: PUT YOUR SECTION NUMBER HERE
+\newline
+Your list of partners: LIST YOUR PARTNERS HERE
+\newline
+
+
+
+\begin{enumerate}
+
+\item
+Prove the proposition
+\begin{displaymath}
+(P \implies (Q \implies (P \land Q))) 
+\implies (\lnot (P \land Q) \implies (P \implies \lnot Q))
+\end{displaymath}
+
+YOUR ANSWER GOES HERE.
+
+\item
+Prove that $2^n < n!$ for all integers $n \ge 4$.
+
+YOUR ANSWER GOES HERE.
+
+\item
+\begin{enumerate}
+\item
+Find a formula that relates the values of {\tt n1}, {\tt n2}, and {\tt so-far}
+at the start of each call to {\tt product-helper} to the product of the
+{\tt a1} and {\tt a2}, the original arguments of the {\tt product} procedure.
+
+YOUR ANSWER GOES HERE.
+\item
+Using your invariant relation, prove that {\tt product} returns the product
+of its two nonnegative integer arguments.
+
+YOUR ANSWER GOES HERE.
+\end{enumerate}
+
+\item
+Prove that {\tt reverse} works.
+You will need some formal definitions:
+if $L = (a_0\ a_1\ a_2\ ...)$, then 
+\begin{eqnarray*}
+{\tt(car\ L)} = a_0,
+{\tt (cdr\ L)} = (a_1\ a_2\ ...), 
+{\tt (cons\ x\ L)} = (x\ a_0\ a_1\ a_2\ ...).
+\end{eqnarray*}
+
+You then are to prove that if
+$L = (x_0\ x_1\ x_2\ ...\ x_N)$, {\tt (reverse L)} returns $(x_N\ x_{N-1}\ ...\ x_1\ x_0)$.
+
+YOUR ANSWER GOES HERE.
+
+\item
+\begin{enumerate}
+\item
+Prove that any Sprouts game consists of a finite number of moves
+before someone loses.
+
+YOUR ANSWER GOES HERE.
+\item
+Give as good an upper bound as you can on the worst-case number of
+moves in a Sprouts game that starts with $n$ dots, and prove your answer.
+
+YOUR ANSWER GOES HERE.
+\end{enumerate}
+
+
+\item
+Prove by induction that $\sum_{i=1}^n \floor{i/2} = \floor{n^2/4}.$
+(Recall that $\floor{x}$ is the largest integer less than or equal to $x$.)
+
+YOUR ANSWER GOES HERE.
+
+\item
+Working at the local pizza parlor, I have a stack of unbaked
+pizza doughs.
+For a most pleasing presentation, I wish
+to arrange them in order of size, with the largest pizza on the bottom.
+I'm able to place my spatula under one of the pizzas and flip over
+the whole stack above the spatula (reversing their order).
+
+This is the only move I can do to change the order of the stack;
+however, I am willing to keep repeating this move until I get the stack
+in order.
+Is it always possible for me to get the pizzas in order?
+Prove your answer.
+
+YOUR ANSWER GOES HERE.
+
+\item
+Assign a grade of A (correct) or F (failure) to
+each of the following proofs.  If you give a F, please
+explain exactly everything that is wrong with the structure or the reasoning in the
+{\it proof}. You should justify all your
+answers (remember, saying that the claim is false is {\it not} 
+a justification).
+
+\begin{enumerate}
+\item
+\begin{theorem}
+For every $n \in \N$, $n^2+n$ is odd.
+\end{theorem}
+\begin{proof}
+The proof will be by induction.\\
+\emph{Base case:} The natural number 1 is odd.\\
+\emph{Inductive step:} Suppose $k \in \N$ and $k^2 + k$ is odd.  Then,
+$${(k+1)^2 + (k+1) = k^2 + 2k + 1 + k +1 = (k^2 + k) + (2k+2) }$$
+is the sum of an odd and an even integer.  Therefore, $(k+1)^2 + (k+1)$
+is odd.  By the Principle of Mathematical Induction, the property that
+$n^2+n$ is odd is true for all natural numbers $n$. 
+\end{proof}
+
+YOUR ANSWER GOES HERE.
+
+\item
+\begin{theorem}
+For all $x,n\in \N$, if $nx=0$ and $n>0$, then $x=0$.
+\end{theorem}
+\begin{proof}
+The proof will be by induction.\\
+\emph{Base case:} If $n=1$, then the equation $nx=0$
+implies $x=0$, since $nx=1\cdot x=x$ in this case.\\
+\emph{Induction step:} Fix $k>0$, and assume that $kx=0$ implies $x=0$.
+Suppose that $(k+1)x=0$.
+Note that $(k+1)x=kx+x$, hence we can conclude that $kx+x=0$,
+or in other words, $kx=-x$.
+Now there are two cases:
+\begin{description}
+\item[Case 1:] $x=0$. In this case, $kx=-x=-0=0$, so $kx=0$.
+Consequently, the inductive hypothesis tells us that $x=0$.
+\item[Case 2:] $x>0$. In this case, $-x<0$ (since $x>0$).
+At the same time, $kx\ge 0$ (since $k,x \ge 0$).
+But this is impossible, since we know $kx=-x$.
+We have a contradiction, and therefore Case 2 cannot happen.
+\end{description}
+In either case, we can conclude that $x=0$.
+This completes the proof of the induction step.
+\end{proof}
+
+YOUR ANSWER GOES HERE.
+
+\item
+\begin{theorem}
+For all $x,y,n\in \N$, if $\max(x,y)=n$, then $x=y$.
+\end{theorem}
+\begin{proof}
+The proof will be by induction.\\
+\emph{Base case:} Suppose that $n=0$.  If $\max(x,y)=0$
+and $x,y\in N$, then $x=0$ and $y=0$, hence $x=y$.\\
+\emph{Induction step:} Assume that, whenever
+we have $\max(x,y)=k$, then $x=y$ must follow.
+Next suppose $x,y$ are such that $\max(x,y)=k+1$.
+Then it follows that $\max(x-1,y-1)=k$, so by the inductive
+hypothesis, $x-1=y-1$.
+In this case, we have $x=y$, completing the induction step.
+\end{proof}
+
+YOUR ANSWER GOES HERE.
+
+\item
+\begin{theorem}
+$\forall n \in \N.\;\; n^2 \leq n$.
+\end{theorem}
+\begin{proof}
+The proof will be by induction.\\
+\emph{Base case:}
+When $n=0$, the statement is $0^2 \leq 0$ which is true. \\
+\emph{Induction step:}
+Now suppose that $k \in \N$, and $k^2 \leq k$.
+We need to show that $$(k+1)^2 \leq k+1$$
+Working backwards we see that:
+\begin{eqnarray*}
+(k+1)^2 &\leq& k+1 \\
+k^2 + 2k + 1 &\leq& k + 1 \\
+k^2 + 2k &\leq& k \\
+k^2 &\leq& k
+\end{eqnarray*}
+So we get back to our original hypothesis which is assumed to be true.
+Hence, for every $n \in \N$ we know that $n^2 \leq n$.
+\end{proof}
+
+YOUR ANSWER GOES HERE.
+
+\end{enumerate}
+\end{enumerate}
+\end{document}
+
+
